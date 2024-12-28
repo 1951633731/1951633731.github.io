@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>新年快乐</title>
+    <title>倒计时</title>
     <style>
         body, html {
             margin: 0;
@@ -33,15 +33,12 @@
             background: rgba(255, 255, 255, 0.7); /* 添加一个半透明的白色背景层，确保文本清晰可见 */
         }
         h1 {
-            font-size: 3vw; /* 使用视口宽度百分比调整字体大小 */
             color: #2c3e50;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
             font-weight: 600;
             display: block;
         }
         #countdown {
-            font-size: 3.5vw; /* 使用视口宽度百分比调整字体大小 */
             font-weight: bold;
             text-align: center;
             padding: 20px;
@@ -57,9 +54,35 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            object-fit: fill; /* 使视频完全填充屏幕，不考虑比例 */
+            object-fit: cover; /* 使视频保持比例填充屏幕 */
             display: none;
             z-index: 100;
+        }
+
+        /* 响应式设计 */
+        @media screen and (max-width: 480px) { /* 针对手机 */
+            h1 {
+                font-size: 6vw;
+            }
+            #countdown {
+                font-size: 8vw;
+            }
+        }
+        @media screen and (min-width: 481px) and (max-width: 1024px) { /* 针对平板 */
+            h1 {
+                font-size: 4vw;
+            }
+            #countdown {
+                font-size: 6vw;
+            }
+        }
+        @media screen and (min-width: 1025px) { /* 针对桌面设备 */
+            h1 {
+                font-size: 2.5vw;
+            }
+            #countdown {
+                font-size: 3.5vw;
+            }
         }
     </style>
 </head>
@@ -69,12 +92,12 @@
         <div id="countdown">...</div>
     </div>
     <video id="video" controls autoplay muted>
-        <source src="2.mp4" type="video/mp4">
+        <source src="6.mp4" type="video/mp4">
         您的浏览器不支持HTML5 video标签。
     </video>
 
     <script>
-        const targetDate = new Date('2024-12-29T00:30:00').getTime();
+        const targetDate = new Date('2025-01-01T00:00:00').getTime();
         const videoElement = document.getElementById('video');
         const contentElement = document.querySelector('.content');
 
