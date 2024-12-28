@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>倒计时</title>
+    <title>新年快乐</title>
     <style>
         body, html {
             margin: 0;
@@ -19,7 +19,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('6.png') no-repeat center center fixed;
+            background: url('2.png') no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
         }
@@ -33,7 +33,7 @@
             background: rgba(255, 255, 255, 0.7); /* 添加一个半透明的白色背景层，确保文本清晰可见 */
         }
         h1 {
-            font-size: 1.8em;
+            font-size: 3vw; /* 使用视口宽度百分比调整字体大小 */
             color: #2c3e50;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             margin-bottom: 10px;
@@ -41,7 +41,7 @@
             display: block;
         }
         #countdown {
-            font-size: 2.5em;
+            font-size: 3.5vw; /* 使用视口宽度百分比调整字体大小 */
             font-weight: bold;
             text-align: center;
             padding: 20px;
@@ -57,7 +57,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            object-fit: cover;
+            object-fit: fill; /* 使视频完全填充屏幕，不考虑比例 */
             display: none;
             z-index: 100;
         }
@@ -69,7 +69,7 @@
         <div id="countdown">...</div>
     </div>
     <video id="video" controls autoplay muted>
-        <source src="6.mp4" type="video/mp4">
+        <source src="2.mp4" type="video/mp4">
         您的浏览器不支持HTML5 video标签。
     </video>
 
