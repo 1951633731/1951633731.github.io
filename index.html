@@ -2,174 +2,125 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>字体演示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>新年快乐！</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        .font-example {
-            margin: 20px 0;
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        .font-example h2 {
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
         }
-        .font-example p {
-            font-size: 1.2em;
-            margin: 10px 0;
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('6.png') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* 添加一个半透明的白色背景层，确保文本清晰可见 */
+        }
+        h1 {
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-weight: 600;
+            display: block;
+        }
+        #countdown {
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* 使视频保持比例填充屏幕 */
+            display: none;
+            z-index: 100;
         }
 
-        /* 系统默认字体 */
-        .system-ui {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        /* 响应式设计 */
+        @media screen and (max-width: 480px) { /* 针对手机 */
+            h1 {
+                font-size: 6vw;
+            }
+            #countdown {
+                font-size: 8vw;
+            }
         }
-
-        /* 常见字体 */
-        .arial {
-            font-family: Arial, Helvetica, sans-serif;
+        @media screen and (min-width: 481px) and (max-width: 1024px) { /* 针对平板 */
+            h1 {
+                font-size: 4vw;
+            }
+            #countdown {
+                font-size: 6vw;
+            }
         }
-        .times {
-            font-family: 'Times New Roman', Times, serif;
-        }
-        .courier {
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .verdana {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        .georgia {
-            font-family: Georgia, serif;
-        }
-        .trebuchet {
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-
-        /* Web安全字体 */
-        .tahoma {
-            font-family: Tahoma, Verdana, Segoe, sans-serif;
-        }
-
-        /* Google Fonts 示例 */
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Lato|Oswald|Montserrat|Merriweather|Raleway|PT+Sans|Playfair+Display&display=swap');
-
-        .open-sans {
-            font-family: 'Open Sans', sans-serif;
-        }
-        .roboto {
-            font-family: 'Roboto', sans-serif;
-        }
-        .lato {
-            font-family: 'Lato', sans-serif;
-        }
-        .oswald {
-            font-family: 'Oswald', sans-serif;
-        }
-        .montserrat {
-            font-family: 'Montserrat', sans-serif;
-        }
-        .merriweather {
-            font-family: 'Merriweather', serif;
-        }
-        .raleway {
-            font-family: 'Raleway', sans-serif;
-        }
-        .pt-sans {
-            font-family: 'PT Sans', sans-serif;
-        }
-        .playfair-display {
-            font-family: 'Playfair Display', serif;
+        @media screen and (min-width: 1025px) { /* 针对桌面设备 */
+            h1 {
+                font-size: 2.5vw;
+            }
+            #countdown {
+                font-size: 3.5vw;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>字体演示</h1>
-
-    <div class="font-example system-ui">
-        <h2>系统默认字体</h2>
-        <p>This is system default font.</p>
+    <div class="content">
+        <h1 id="title">距离2025年还有：</h1>
+        <div id="countdown">...</div>
     </div>
+    <video id="video" controls autoplay muted>
+        <source src="6.mp4" type="video/mp4">
+        您的浏览器不支持HTML5 video标签。
+    </video>
 
-    <div class="font-example arial">
-        <h2>Arial</h2>
-        <p>This is Arial font.</p>
-    </div>
+    <script>
+        const targetDate = new Date('2025-01-01T00:00:00').getTime();
+        const videoElement = document.getElementById('video');
+        const contentElement = document.querySelector('.content');
 
-    <div class="font-example times">
-        <h2>Times New Roman</h2>
-        <p>This is Times New Roman font.</p>
-    </div>
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-    <div class="font-example courier">
-        <h2>Courier</h2>
-        <p>This is Courier font.</p>
-    </div>
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <div class="font-example verdana">
-        <h2>Verdana</h2>
-        <p>This is Verdana font.</p>
-    </div>
+                document.getElementById('countdown').innerHTML = `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+            } else {
+                contentElement.style.display = 'none';
+                document.body.style.backgroundImage = 'none';
+                videoElement.style.display = 'block';
+                videoElement.play();
+            }
+        }
 
-    <div class="font-example georgia">
-        <h2>Georgia</h2>
-        <p>This is Georgia font.</p>
-    </div>
-
-    <div class="font-example trebuchet">
-        <h2>Trebuchet MS</h2>
-        <p>This is Trebuchet MS font.</p>
-    </div>
-
-    <div class="font-example tahoma">
-        <h2>Tahoma</h2>
-        <p>This is Tahoma font.</p>
-    </div>
-
-    <div class="font-example open-sans">
-        <h2>Open Sans</h2>
-        <p>This is Open Sans font.</p>
-    </div>
-
-    <div class="font-example roboto">
-        <h2>Roboto</h2>
-        <p>This is Roboto font.</p>
-    </div>
-
-    <div class="font-example lato">
-        <h2>Lato</h2>
-        <p>This is Lato font.</p>
-    </div>
-
-    <div class="font-example oswald">
-        <h2>Oswald</h2>
-        <p>This is Oswald font.</p>
-    </div>
-
-    <div class="font-example montserrat">
-        <h2>Montserrat</h2>
-        <p>This is Montserrat font.</p>
-    </div>
-
-    <div class="font-example merriweather">
-        <h2>Merriweather</h2>
-        <p>This is Merriweather font.</p>
-    </div>
-
-    <div class="font-example raleway">
-        <h2>Raleway</h2>
-        <p>This is Raleway font.</p>
-    </div>
-
-    <div class="font-example pt-sans">
-        <h2>PT Sans</h2>
-        <p>This is PT Sans font.</p>
-    </div>
-
-    <div class="font-example playfair-display">
-        <h2>Playfair Display</h2>
-        <p>This is Playfair Display font.</p>
-    </div>
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
