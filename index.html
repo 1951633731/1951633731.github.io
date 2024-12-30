@@ -2,125 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>新年快乐！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year Fonts Showcase</title>
+    <!-- 引入所需的Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Dancing+Script&family=Comfortaa&family=Kalam&family=Gloria+Hallelujah&family=Patrick+Hand&family=Permanent+Marker&family=Luckiest+Guy&family=Chewy&family=Annie+Use+Your+Telescope&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('6.png') no-repeat center center fixed;
-            background-size: cover;
-            z-index: -1;
-        }
-        .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.7); /* 添加一个半透明的白色背景层，确保文本清晰可见 */
-        }
-        h1 {
-            color: #2c3e50;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            font-weight: 600;
-            display: block;
-        }
-        #countdown {
-            font-weight: bold;
+        body {
+            background-color: black;
+            color: white;
             text-align: center;
             padding: 20px;
-            background: linear-gradient(to right, #3498db, #2980b9);
-            color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            letter-spacing: 2px;
+            font-family: Arial, sans-serif;
         }
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover; /* 使视频保持比例填充屏幕 */
-            display: none;
-            z-index: 100;
+        h2 {
+            font-size: 1.5em;
+            color: #FFD700;
         }
+        .font-container {
+            margin: 20px 0;
+        }
+        .font-sample {
+            font-size: 2em;
+            text-shadow: 2px 2px 4px #000;
+            animation: float 3s ease-in-out infinite;
+        }
+        .lobster { font-family: 'Lobster', cursive; color: #FFD700; }
+        .pacifico { font-family: 'Pacifico', cursive; color: #ff69b4; }
+        .dancing-script { font-family: 'Dancing Script', cursive; color: #ff6347; }
+        .comfortaa { font-family: 'Comfortaa', cursive; color: #4169e1; }
+        .kalam { font-family: 'Kalam', cursive; color: #9acd32; }
+        .gloria-hallelujah { font-family: 'Gloria Hallelujah', cursive; color: #ffeb3b; }
+        .patrick-hand { font-family: 'Patrick Hand', cursive; color: #ff4500; }
+        .permanent-marker { font-family: 'Permanent Marker', cursive; color: #6a5acd; }
+        .luckiest-guy { font-family: 'Luckiest Guy', cursive; color: #ff6347; }
+        .chewy { font-family: 'Chewy', cursive; color: #daa520; }
+        .annie-telescope { font-family: 'Annie Use Your Telescope', cursive; color: #00ced1; }
+        .nothing-could-do { font-family: 'Nothing You Could Do', cursive; color: #8a2be2; }
 
-        /* 响应式设计 */
-        @media screen and (max-width: 480px) { /* 针对手机 */
-            h1 {
-                font-size: 6vw;
-            }
-            #countdown {
-                font-size: 8vw;
-            }
-        }
-        @media screen and (min-width: 481px) and (max-width: 1024px) { /* 针对平板 */
-            h1 {
-                font-size: 4vw;
-            }
-            #countdown {
-                font-size: 6vw;
-            }
-        }
-        @media screen and (min-width: 1025px) { /* 针对桌面设备 */
-            h1 {
-                font-size: 2.5vw;
-            }
-            #countdown {
-                font-size: 3.5vw;
-            }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1 id="title">距离2025年还有：</h1>
-        <div id="countdown">...</div>
+    <div class="font-container lobster">
+        <h2>Lobster</h2>
+        <div class="font-sample">新年快乐</div>
     </div>
-    <video id="video" controls autoplay muted>
-        <source src="6.mp4" type="video/mp4">
-        您的浏览器不支持HTML5 video标签。
-    </video>
-
-    <script>
-        const targetDate = new Date('2025-01-01T00:00:00').getTime();
-        const videoElement = document.getElementById('video');
-        const contentElement = document.querySelector('.content');
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('countdown').innerHTML = `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
-            } else {
-                contentElement.style.display = 'none';
-                document.body.style.backgroundImage = 'none';
-                videoElement.style.display = 'block';
-                videoElement.play();
-            }
-        }
-
-        setInterval(updateCountdown, 1000);
-    </script>
+    <div class="font-container pacifico">
+        <h2>Pacifico</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container dancing-script">
+        <h2>Dancing Script</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container comfortaa">
+        <h2>Comfortaa</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container kalam">
+        <h2>Kalam</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container gloria-hallelujah">
+        <h2>Gloria Hallelujah</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container patrick-hand">
+        <h2>Patrick Hand</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container permanent-marker">
+        <h2>Permanent Marker</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container luckiest-guy">
+        <h2>Luckiest Guy</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container chewy">
+        <h2>Chewy</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container annie-telescope">
+        <h2>Annie Use Your Telescope</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
+    <div class="font-container nothing-could-do">
+        <h2>Nothing You Could Do</h2>
+        <div class="font-sample">新年快乐</div>
+    </div>
 </body>
 </html>
