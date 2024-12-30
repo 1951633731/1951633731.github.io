@@ -20,7 +20,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('2.png') no-repeat center center fixed;
+            background: url('6.png') no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
         }
@@ -38,6 +38,7 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             font-weight: 600;
             display: block;
+            font-size: 4.5vw; /* 保持字体大小 */
         }
         #countdown {
             font-weight: bold;
@@ -48,6 +49,7 @@
             border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             letter-spacing: 2px;
+            font-size: 6.3vw; /* 保持字体大小 */
         }
         video {
             position: fixed;
@@ -61,14 +63,16 @@
         }
         .message {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* 占据屏幕宽度的一半 */
+            height: 50%; /* 占据屏幕高度的一半 */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-size: 3em;
+            font-size: 2.5em; /* 调整字体大小以适应屏幕大小 */
             color: #fff;
             text-align: center;
             background: rgba(0,0,0,0.7); /* 黑色半透明背景 */
@@ -85,52 +89,61 @@
         /* 响应式设计 */
         @media screen and (max-width: 480px) { /* 针对手机 */
             h1 {
-                font-size: 6vw;
+                font-size: 10.8vw;
             }
             #countdown {
-                font-size: 8vw;
+                font-size: 14.4vw;
             }
             .message {
                 font-size: 5vw;
+                width: 90%;
+                height: 90%;
             }
         }
         @media screen and (min-width: 481px) and (max-width: 1024px) { /* 针对平板 */
             h1 {
-                font-size: 4vw;
+                font-size: 7.2vw;
             }
             #countdown {
-                font-size: 6vw;
+                font-size: 10.8vw;
             }
             .message {
                 font-size: 4vw;
+                width: 70%;
+                height: 70%;
             }
         }
         @media screen and (min-width: 1025px) { /* 针对桌面设备 */
             h1 {
-                font-size: 2.5vw;
+                font-size: 4.5vw;
             }
             #countdown {
-                font-size: 3.5vw;
+                font-size: 6.3vw;
             }
             .message {
-                font-size: 3vw;
+                font-size: 2.5vw;
             }
         }
     </style>
 </head>
 <body>
     <div class="content">
-        <h1 id="title">距离2025年还有：</h1>
+        <h1 id="title">🎈距离2025年还有：</h1>
         <div id="countdown">...</div>
     </div>
     <video id="video" controls muted>
         <source src="2.mp4" type="video/mp4">
         您的浏览器不支持HTML5 video标签。
     </video>
-    <div class="message">祝可爱的张珺涵：新的一年 岁悦常安，天天开心！</div>
+    <div class="message">
+        <span>🎈祝可爱的张珺涵：</span>
+        <span>✨新的一年，</span>
+        <span>🌸岁悦常安，</span>
+        <span>😄天天开心！</span>
+    </div>
 
     <script>
-        const videoStartDate = new Date('2024-12-30T22:44:00').getTime();
+        const videoStartDate = new Date('2024-12-30T23:36:00').getTime();
         const videoElement = document.getElementById('video');
         const contentElement = document.querySelector('.content');
         const messageElement = document.querySelector('.message');
