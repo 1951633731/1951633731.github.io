@@ -31,25 +31,25 @@
             align-items: center;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.7); /* 添加一个半透明的白色背景层，确保文本清晰可见 */
+            background: none; /* 移除半透明背景 */
         }
         h1 {
             color: #2c3e50;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             font-weight: 600;
             display: block;
-            font-size: 4.5vw; /* 保持字体大小 */
+            font-size: 9vw; /* 增大字体大小 */
         }
         #countdown {
             font-weight: bold;
             text-align: center;
-            padding: 20px;
+            padding: 40px; /* 增大内边距 */
             background: linear-gradient(to right, #3498db, #2980b9);
             color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            letter-spacing: 2px;
-            font-size: 6.3vw; /* 保持字体大小 */
+            border-radius: 40px; /* 增大圆角 */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            letter-spacing: 4px; /* 增大字符间距 */
+            font-size: 12.6vw; /* 增大字体大小 */
         }
         video {
             position: fixed;
@@ -66,16 +66,15 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50%; /* 占据屏幕宽度的一半 */
-            height: 50%; /* 占据屏幕高度的一半 */
+            width: 100%; /* 占据屏幕100%宽度 */
+            height: auto; /* 根据内容自动调整高度 */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-size: 2.5em; /* 调整字体大小以适应屏幕大小 */
+            font-size: 5em; /* 增大字体大小 */
             color: #fff;
             text-align: center;
-            background: rgba(0,0,0,0.7); /* 黑色半透明背景 */
             font-family: 'ZCOOL KuaiLe', cursive; /* 使用ZCOOL KuaiLe字体 */
             display: none; /* 初始状态为隐藏 */
             z-index: 101; /* 确保文本在视频上层 */
@@ -89,39 +88,36 @@
         /* 响应式设计 */
         @media screen and (max-width: 480px) { /* 针对手机 */
             h1 {
-                font-size: 10.8vw;
+                font-size: 12vw;
             }
             #countdown {
-                font-size: 14.4vw;
+                font-size: 16vw;
+                padding: 20px;
             }
             .message {
-                font-size: 5vw;
-                width: 90%;
-                height: 90%;
+                font-size: 9vw;
             }
         }
         @media screen and (min-width: 481px) and (max-width: 1024px) { /* 针对平板 */
             h1 {
-                font-size: 7.2vw;
+                font-size: 9vw;
             }
             #countdown {
-                font-size: 10.8vw;
+                font-size: 12.6vw;
             }
             .message {
-                font-size: 4vw;
-                width: 70%;
-                height: 70%;
+                font-size: 7.2vw;
             }
         }
         @media screen and (min-width: 1025px) { /* 针对桌面设备 */
             h1 {
-                font-size: 4.5vw;
+                font-size: 9vw;
             }
             #countdown {
-                font-size: 6.3vw;
+                font-size: 12.6vw;
             }
             .message {
-                font-size: 2.5vw;
+                font-size: 5em;
             }
         }
     </style>
@@ -143,7 +139,7 @@
     </div>
 
     <script>
-        const videoStartDate = new Date('2024-12-30T23:56:50').getTime();
+        const videoStartDate = new Date('2024-12-31T00:01:00').getTime();
         const videoElement = document.getElementById('video');
         const contentElement = document.querySelector('.content');
         const messageElement = document.querySelector('.message');
