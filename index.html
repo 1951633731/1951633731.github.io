@@ -129,6 +129,18 @@
     </div>
 
     <script>
+        // 禁止右键查看源码
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 禁用常用快捷键
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c' || e.key === 'x' || e.key === 'v')) {
+                e.preventDefault();
+            }
+        });
+
         const videoStartDate = new Date('2024-12-31T23:59:50').getTime();
         const videoElement = document.getElementById('video');
         const contentElement = document.querySelector('.content');
